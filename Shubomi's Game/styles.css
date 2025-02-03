@@ -1,0 +1,271 @@
+body {
+  font-family: arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #f06, #4a90e2, #50e3c2);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: scale(0.5);
+  }
+}
+
+@keyframes celebrate {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  50% {
+      transform: scale(1.2);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+.celebrate {
+  animation: celebrate 1s ease-out forwards;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  background: rgba(225, 225, 225, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-animation-filter: blur(10px);
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  border: 2px solid rgba(225, 225, 225, 0.3);
+  opacity: 0.8;
+  backdrop-filter: none;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: black;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+p[data-testid="gameInstruction"] {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: brown;
+  margin-bottom: 20px;
+}
+
+p[data-testid="GameStatus"],
+p[data-testid="Score"] {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: rgba(225, 225, 225, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+div[data-testid="colorBox"] {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  perspective: 1000px;
+}
+
+div[data-testid="colorBox"] .front,
+div[data-testid="colorBox"] .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  transition: transform 0.5s ease background-color 5s ease;
+}
+
+div[data-testid="colorBox"] .front {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(0deg);
+}
+
+div[data-testid="colorBox"] .back {
+  background-color: lightcoral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+div[data-testid="colorBox"].flipped .front {
+  transform: rotateY(180deg);
+}
+
+div[data-testid="colorBox"].flipped .back {
+  transform: rotateY(0deg);
+}
+
+div[data-testid="colorOption"] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+  justify-items: center;
+}
+
+button.guess-btn {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.guess-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+button.guess-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+button[data-testid="newGameButton"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: #007BFF;
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button[data-testid="newGameButton"]:hover {
+  background: linear-gradient(45deg, #0056b3, #003580);
+  transform: scale(1.05);
+}
+
+button[data-testid="newGameButton"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 225, 0.5);
+}
+
+@media (max-width: 480px) {
+  .container {
+      width: 95%; 
+      padding: 10px;
+  }
+
+  h1 {
+      font-size: 1.5rem; 
+  }
+
+  p[data-testid="gameInstruction"] {
+      font-size: 0.9rem;
+  }
+
+  p[data-testid="gameStatus"],
+  p[data-testid="score"] {
+      font-size: 1rem; 
+  }
+
+  
+  div[data-testid="colorOption"] {
+      grid-template-columns: repeat(2, 1fr); 
+  }
+
+  button.guess-btn {
+      width: 100%; 
+      padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+  }
+
+  h1 {
+      font-size: 1.7rem; 
+  }
+
+  p[data-testid="gameInstruction"] {
+      font-size: 1rem;
+  }
+
+  div[data-testid="colorOption"] {
+      grid-template-columns: repeat(3, 1fr); 
+  }
+
+  button.guess-btn {
+      width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+      width: 60%;
+      max-width: 600px;
+  }
+
+  h1 {
+      font-size: 2.5rem;
+  }
+
+  p[data-testid="gameInstruction"] {
+      font-size: 1.2rem;
+  }
+
+  div[data-testid="colorOption"] {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+
+  button.guess-btn {
+      width: 120px;
+      height: 60px;
+  }
+}
+
+
+  

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Color Quest</title>
+</head>
+<body>
+   <div class="container">
+    
+        <h1>Color Quest</h1>
+        <p data-testid="gameInstruction">Guess The Hidden Colour!</p>
+        
+        <div data-testid="colorBox" class="flipped">
+                     <div class="front">Front</div>
+                     <div class="back">Back</div>
+        </div>
+
+
+        <div data-testid="colorOption">
+            <button class="guess-btn">Opt 1</button>
+            <button class="guess-btn">Opt 2</button>
+            <button class="guess-btn">Opt 3</button>
+            <button class="guess-btn">Opt 4</button>
+            <button class="guess-btn">Opt 5</button>
+            <button class="guess-btn">Opt 6</button>
+        </div>
+
+        <p data-testid="gameStatus"></p>
+ 
+        <p data-testid="score">Score: 0</p>
+
+        <button data-testid="newGameButton">New Game</button> 
+   </div> 
+   <script src="script.js" defer></script>
+</body>
+</html>
